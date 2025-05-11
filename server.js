@@ -85,20 +85,20 @@ app.post("/login", async (req, res) => {
 
 
 app.get('/admin',async(req,res)=>{
-    const getAdminQuery = `SELECT * FROM loan_form JOIN members ORDER BY updated_at DESC`;
+    const getAdminQuery = `SELECT name,reason,amount,updated_at,action,profile,created_at FROM loan_form JOIN members ORDER BY updated_at DESC`;
     const adimData = await db.all(getAdminQuery);
     res.send(adimData);
 });
 
 app.get('/verifier',async(req,res)=>{
-    const verifierQuery = `SELECT * FROM loan_form JOIN members WHERE action = 'pending' ORDER BY updated_at DESC;`
+    const verifierQuery = `SELECT name,reason,amount,updated_at,action,profile,created_at FROM loan_form JOIN members WHERE action = 'pending' ORDER BY updated_at DESC;`
     const verifierdata = await db.all(verifierQuery);
     res.send(verifierdata);
 });
 
 app.get('/user',async(req,res)=>{
     const userId = localStorage.getItem('userId');
-    const userQuery = `SELECT * FROM loan_form JOIN members on members.id = loan_form.user_id  WHERE members.id = ${userId} ORDER BY updated_at DESC;`
+    const userQuery = `SELECT name,reason,amount,updated_at,action,profile,created_at FROM loan_form JOIN members on members.id = loan_form.user_id  WHERE members.id = ${userId} ORDER BY updated_at DESC;`
     const data = await db.all(userQuery);
     res.send(data);
 });
