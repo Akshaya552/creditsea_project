@@ -85,13 +85,13 @@ app.post("/login", async (req, res) => {
 
 
 app.get('/admin',async(req,res)=>{
-    const getAdminQuery = `SELECT loan_form.name,loan_form.reason,loan_form.amount,loan_form.updated_at,loan_form.action,members.profile,members.created_at FROM loan_form JOIN members ORDER BY updated_at DESC`;
+    const getAdminQuery = `SELECT loan_form.name,loan_form.reason,loan_form.amount,loan_form.updated_at,loan_form.action,members.profile,members.created_at FROM loan_form JOIN members ON members.id=loan_form.user_id ORDER BY updated_at DESC`;
     const adimData = await db.all(getAdminQuery);
     res.send(adimData);
 });
 
 app.get('/verifier',async(req,res)=>{
-    const verifierQuery = `SELECT loan_form.name,loan_form.reason,loan_form.amount,loan_form.updated_at,loan_form.action,members.profile,members.created_at FROM loan_form JOIN members WHERE action = 'pending' ORDER BY updated_at DESC;`
+    const verifierQuery = `SELECT loan_form.name,loan_form.reason,loan_form.amount,loan_form.updated_at,loan_form.action,members.profile,members.created_at FROM loan_form JOIN members ON members.id=loan_form.user_id WHERE action = 'pending' ORDER BY updated_at DESC;`
     const verifierdata = await db.all(verifierQuery);
     res.send(verifierdata);
 });
