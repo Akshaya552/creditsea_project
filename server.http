@@ -1,0 +1,47 @@
+POST  http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "name" : "Hannah Carter",
+    "password" : "JBjL4Fi0"
+}
+
+###
+POST  http://localhost:3000/signup
+Content-Type: application/json
+
+{
+    "name" : "Yaswanth",
+    "password" : "Yaswanth545",
+    "profile" : "https://img.freepik.com/free-photo/yellow-ticket-top-view_1101-121.jpg"
+}
+
+###
+GET http://localhost:3000/admin
+
+###
+GET http://localhost:3000/verifier
+
+###
+GET http://localhost:3000/user
+
+###
+POST http://localhost:3000/loan-form
+Content-Type: application/json
+
+{
+    "name" : "bunty",
+    "tenure" : "24",
+    "status" : "UnEmployed",
+    "reason" : "Comics Reading",
+    "amount" : "4000",
+    "address" : "kphb,Kukatpally,Hyderabad"
+}
+
+###
+PATCH http://localhost:3000/approval/6001/7483/
+Content-Type: application/json
+
+{
+    "action" : "verified"
+}
